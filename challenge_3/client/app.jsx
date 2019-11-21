@@ -77,8 +77,14 @@ class Form1 extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.setForm1(this.state);
-    this.props.nextPage();
+    let data = this.state;
+    fetch('http://localhost:3000/login', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/json' }
+    })
     this.setState({ name: '', email: '', password: '' })
+    this.props.nextPage();
   }
 
   render() {
@@ -146,8 +152,14 @@ class Form2 extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.setForm2(this.state);
+    let data = this.state;
+    fetch('http://localhost:3000/address', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/json' }
+    })
     this.props.nextPage();
-    this.setState({ line1: '', line2: '', city: '', state: '', zipCode: '', phone: '',})
+    this.setState({ line1: '', line2: '', city: '', state: '', zipCode: '', phone: ''})
   }
 
   render() {
@@ -245,8 +257,15 @@ class Form3 extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.setForm3(this.state);
+    let data = this.state;
+    fetch('http://localhost:3000/credit', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/json' }
+    })
     this.props.nextPage();
     this.setState({ credit: '', date: '', cvv: '', billingZip: '' })
+    
   }
 
   render() {
